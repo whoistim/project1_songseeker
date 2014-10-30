@@ -14,7 +14,7 @@
     Title: <%= song.title %>
     <br>
     <% if(song.tracks.length>0) {  %>
-      SpotifyID: <%= song.tracks[0].foreign_id  %>
+      SpotifyID: <%= song.tracks[0].foreign_id.slice(14)  %>
       <br>
     <% } %>
 

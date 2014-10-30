@@ -120,7 +120,7 @@ var url = "http://developer.echonest.com/api/v4/song/profile?api_key="+process.e
 var mySongLookup = req.body.mySongId;
 // console.log("this is mySongId*** "+mySongLookup);
 url = url+mySongLookup;
-// console.log("this is search url*** "+url);
+console.log("this is search url*** "+url);
 
   request(url, function(error,response,body){
     if(response.statusCode !== 200){//check for valide server response code
@@ -133,7 +133,8 @@ url = url+mySongLookup;
       // console.log(Array.isArray(result.response.songs))
       // console.log("This is the result ****", result.response.songs[0]);
       var song = result.response.songs[0];
-      console.log(song);
+      // console.log(song);
+      // console.log(song.tracks.foreign_id);
 
       res.render("mysongs", {user:req.user, song: song});
       
