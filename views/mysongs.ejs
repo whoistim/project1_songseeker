@@ -14,7 +14,7 @@
 <% var trimSpotId = "" %>
 	<% if(song.tracks.length>0) {%>
 	  <% var spotifyID =  song.tracks[0].foreign_id %>
-	  <% trimSpotId =  spotifyID.slice(13)%>
+	  <% trimSpotId =  spotifyID.slice(14)%>
 	  Spotify ID: <%= trimSpotId%>
 	  <% } %>
 <br>
