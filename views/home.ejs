@@ -18,10 +18,17 @@
     <label for="title">Enter a Song Title</label>
     <input type="text" id= "title" name="title" placeholder="title" autofocus>    
 	<br>
-    <label for="artist">Artist</label>
-    <input type="text" id= "artist"  name="artist" placeholder="artist">
   <br>
+    <label for="relevance">Well Known</label>    
+    <input type="radio" id= "familiar"  name="sort" value="artist_familiarity-desc" checked>
+    <label for="relevance">Obscure</label>
+    <input type="radio" id= "relevance"  name="sort" value="artist_familiarity-asc">
+<!--     <label for="artist">Artist</label>
+    <input type="text" id= "artist"  name="artist" placeholder="artist">
+  <br> -->
   <input type="submit">
+
+  <!-- <br> -->
   </form>
 <!--   <h1>Or By Attributes!</h1>
     <label for="style">Style or Genre</label>
@@ -29,12 +36,7 @@
   <br>
     <label for="mood">Mood</label>
     <input type="text" id= "mood"  name="mood" placeholder="mood">
-  <br>
-    <label for="relevance">Relevant?</label>
-    <input type="radio" id= "relevance"  name="rank_type" value="relevance">
-    <label for="relevance">Familiar?</label>    
-    <input type="radio" id= "familiar"  name="rank_type" value="familiarity">
-  <br>
+
       <p>Choose a key</p>
   <select>
   <option value="">Any</option>

@@ -26,37 +26,37 @@
     <input type="number" class ="dInput" id="energy"  name="energy" min="0" max="1" step="0.01" value="<%= song.audio_summary.energy %>">
     <br>
     <label for="eFuzz">Fuzziness</label>
-    <input type=range min=1.3 max=7 name="eFuzz" value=0 class=fader id="energyFuzz"step=.25>
+    <input type=range min=1 max=7 name="eFuzz" value=0 class=fader id="energyFuzz"step=.25>
   <br>
     <label for="liveness">Liveness</label>
     <input type="number" class ="dInput" name="liveness" min="0" max="1" step="0.01" value="<%= song.audio_summary.liveness %>">
     <br>
     <label for="liveFuzz">Fuzziness</label>
-    <input type=range min=1.3 max=7 name="liveFuzz" value=0 class=fader id="livenessFuzz"step=.05>
+    <input type=range min=1 max=7 name="liveFuzz" value=0 class=fader id="livenessFuzz"step=.05>
   <br>
     <label for="tempo">Tempo</label>
     <input type="number" class ="dInput" name="tempo" min="0" max="1" step="0.01" value="<%= song.audio_summary.tempo %>">
     <br>
     <label for="tFuzz">Fuzziness</label>
-    <input type=range min=1.3 max=7 name="tFuzz" value=0 class=fader id="tempoFuzz"step=.05>
+    <input type=range min=1 max=7 name="tFuzz" value=0 class=fader id="tempoFuzz"step=.05>
   <br>
     <label for="speechiness">Speechiness</label>
     <input type="number" class ="dInput" name="speechiness" min="0" max="1" step="0.01" value="<%= song.audio_summary.speechiness %>">
     <br>
     <label for="sFuzz">Fuzziness</label>
-    <input type=range min=1.3 max=7 name="sFuzz" value=0 class=fader id="speechinessFuzz"step=.05>
+    <input type=range min=1 max=7 name="sFuzz" value=0 class=fader id="speechinessFuzz"step=.05>
   <br>
     <label for="acousticness">Acousticness</label>
     <input type="number" class ="dInput" name="acousticness" min="0" max="1" step="0.01" value="<%= song.audio_summary.acousticness %>">
     <br>
     <label for="aFuzz">Fuzziness</label>
-    <input type=range min=1.3 max=7 name="aFuzz" value=0 class=fader id="acousticnessFuzz"step=.05>
+    <input type=range min=1 max=7 name="aFuzz" value=0 class=fader id="acousticnessFuzz"step=.05>
   <br>
     <label for="instrumentalness">instrumentalness</label>
     <input type="number" class ="dInput" name="instrumentalness" min="0" max="1" step="0.01" value="<%= song.audio_summary.instrumentalness %>">
     <br>
     <label for="iFuzz">Fuzziness</label>
-    <input type=range min=1.3 max=7 name="iFuzz" value=0 class=fader id="instrumentalnessFuzz"step=.05>
+    <input type=range min=1 max=7 name="iFuzz" value=0 class=fader id="instrumentalnessFuzz"step=.05>
 	</form>
 
 	<form id="myForm" action="/search" method="POST">
@@ -75,26 +75,32 @@
 	  <option value="9"<%if(song.audio_summary.key == "9"){%>selected<%}%>>A</option>
 	  <option value="10"<%if(song.audio_summary.key == "10"){%>selected<%}%>>B-Flat</option>
 	  <option value="11"<%if(song.audio_summary.key == "11"){%>selected<%}%>>B</option>
-	</select>
-    <input type="hidden" name="max_energy" id="energyMax" value="">
-    <input type="hidden" name="min_energy" id="energyMin" value="">
-    <br>
-    <input type="hidden" name="max_liveness" id="livenessMax" value="">
-    <input type="hidden" name="min_liveness" id="livenessMin" value="">
-    <br>
-    <input type="hidden" name="max_tempo" id="tempoMax" value="">
-    <input type="hidden" name="min_tempo" id="tempoMin" value="">
-    <br>
-    <input type="hidden" name="max_speechiness" id="speechinessMax" value="">
-    <input type="hidden" name="min_speechiness" id="speechinessMin" value="">
-    <br>
-    <input type="hidden" name="max_acousticness" id="acousticnessMax" value="">
-    <input type="hidden" name="min_acousticness" id="acousticnessMin" value="">
-    <br>
-    <input type="hidden" name="max_instrumentalness" id="instrumentalnessMax" value="">
-    <input type="hidden" name="min_instrumentalness" id="instrumentalnessMin" value="">
-    <br>
 
+	</select>
+	  <br>
+	  <br>
+    <label for="relevance">Well Known</label>    
+    <input type="radio" id= "familiar"  name="sort" value="artist_familiarity-desc" checked>
+    <label for="relevance">Obscure</label>
+    <input type="radio" id= "relevance"  name="sort" value="artist_familiarity-asc">
+		    
+		    <input type="hidden" name="max_energy" id="energyMax" value="">
+		    <input type="hidden" name="min_energy" id="energyMin" value="">
+
+		    <input type="hidden" name="max_liveness" id="livenessMax" value="">
+		    <input type="hidden" name="min_liveness" id="livenessMin" value="">
+
+		    <input type="hidden" name="max_tempo" id="tempoMax" value="">
+		    <input type="hidden" name="min_tempo" id="tempoMin" value="">
+
+		    <input type="hidden" name="max_speechiness" id="speechinessMax" value="">
+		    <input type="hidden" name="min_speechiness" id="speechinessMin" value="">
+
+		    <input type="hidden" name="max_acousticness" id="acousticnessMax" value="">
+		    <input type="hidden" name="min_acousticness" id="acousticnessMin" value="">
+
+		    <input type="hidden" name="max_instrumentalness" id="instrumentalnessMax" value="">
+		    <input type="hidden" name="min_instrumentalness" id="instrumentalnessMin" value="">
 
     <input type="submit" >
 	</form>
