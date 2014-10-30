@@ -6,7 +6,7 @@
     <h2 style = "color:red;"><%= message %></h2>
   <% } %>
 
-<h2>This shiz work?</h2>
+<h2>This Works!</h2>
 	<%= song.artist_name %>
 <br>
 	<%= song.title %>
@@ -16,7 +16,9 @@
   Spotify ID: <%= trimSpotId%>
 <br>
 <!-- <iframe src="https://embed.spotify.com/?uri=spotify:track:" frameborder="0" allowtransparency="true"></iframe> -->
-<iframe src="https://embed.spotify.com/?uri=spotify:track:<%= trimSpotId %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+<% if(trimSpotId){ %>
+	<iframe src="https://embed.spotify.com/?uri=spotify:track:<%= trimSpotId %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+	<% } %>
 <hr>
 	<form>
 		  <br>
