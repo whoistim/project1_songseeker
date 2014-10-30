@@ -1,0 +1,163 @@
+<% include partials/header.ejs%>
+
+
+
+  <% if (typeof message !== 'undefined'){ %>
+    <h2 style = "color:red;"><%= message %></h2>
+  <% } %>
+
+<h2>This shiz work?</h2>
+	<%= song.artist_name %>
+<br>
+	<%= song.title %>
+<br>
+  <% var spotifyID =  song.tracks[0].foreign_id %>
+  <% trimSpotId =  spotifyID.slice(13)%>
+  Spotify ID: <%= trimSpotId%>
+<br>
+<!-- <iframe src="https://embed.spotify.com/?uri=spotify:track:" frameborder="0" allowtransparency="true"></iframe> -->
+<iframe src="https://embed.spotify.com/?uri=spotify:track:<%= trimSpotId %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+<hr>
+	<form>
+		  <br>
+    <label for="energy">Energy</label>
+    <input type="number" class ="dInput" id="energy"  name="energy" min="0" max="1" step="0.01" value="<%= song.audio_summary.energy %>">
+    <br>
+    <label for="eFuzz">Fuzziness</label>
+    <input type=range min=1.3 max=7 name="eFuzz" value=0 class=fader id="energyFuzz"step=.25>
+  <br>
+    <label for="liveness">Liveness</label>
+    <input type="number" class ="dInput" name="liveness" min="0" max="1" step="0.01" value="<%= song.audio_summary.liveness %>">
+    <br>
+    <label for="liveFuzz">Fuzziness</label>
+    <input type=range min=1.3 max=7 name="liveFuzz" value=0 class=fader id="livenessFuzz"step=.05>
+  <br>
+    <label for="tempo">Tempo</label>
+    <input type="number" class ="dInput" name="tempo" min="0" max="1" step="0.01" value="<%= song.audio_summary.tempo %>">
+    <br>
+    <label for="tFuzz">Fuzziness</label>
+    <input type=range min=1.3 max=7 name="tFuzz" value=0 class=fader id="tempoFuzz"step=.05>
+  <br>
+    <label for="speechiness">Speechiness</label>
+    <input type="number" class ="dInput" name="speechiness" min="0" max="1" step="0.01" value="<%= song.audio_summary.speechiness %>">
+    <br>
+    <label for="sFuzz">Fuzziness</label>
+    <input type=range min=1.3 max=7 name="sFuzz" value=0 class=fader id="speechinessFuzz"step=.05>
+  <br>
+    <label for="acousticness">Acousticness</label>
+    <input type="number" class ="dInput" name="acousticness" min="0" max="1" step="0.01" value="<%= song.audio_summary.acousticness %>">
+    <br>
+    <label for="aFuzz">Fuzziness</label>
+    <input type=range min=1.3 max=7 name="aFuzz" value=0 class=fader id="acousticnessFuzz"step=.05>
+  <br>
+    <label for="instrumentalness">instrumentalness</label>
+    <input type="number" class ="dInput" name="instrumentalness" min="0" max="1" step="0.01" value="<%= song.audio_summary.instrumentalness %>">
+    <br>
+    <label for="iFuzz">Fuzziness</label>
+    <input type=range min=1.3 max=7 name="iFuzz" value=0 class=fader id="instrumentalnessFuzz"step=.05>
+	</form>
+
+	<form id="myForm" action="/search" method="POST">
+	 <p>Choose a key</p>
+  <select name="key">
+	  <option value="" <%if(song.audio_summary.key == ""){%>selected<%}%>>Any</option>
+	  <option value="0"<%if(song.audio_summary.key == "0"){%>selected<%}%>>C</option>
+	  <option value="1"<%if(song.audio_summary.key == "1"){%>selected<%}%>>C-Sharp</option>
+	  <option value="2"<%if(song.audio_summary.key == "2"){%>selected<%}%>>D</option>
+	  <option value="3"<%if(song.audio_summary.key == "3"){%>selected<%}%>>E-Flat</option>  
+	  <option value="4"<%if(song.audio_summary.key == "4"){%>selected<%}%>>E</option>
+	  <option value="5"<%if(song.audio_summary.key == "5"){%>selected<%}%>>F</option>  
+	  <option value="6"<%if(song.audio_summary.key == "6"){%>selected<%}%>>F-Sharp</option>
+	  <option value="7"<%if(song.audio_summary.key == "7"){%>selected<%}%>>G</option>  
+	  <option value="8"<%if(song.audio_summary.key == "8"){%>selected<%}%>>A-Flat</option>
+	  <option value="9"<%if(song.audio_summary.key == "9"){%>selected<%}%>>A</option>
+	  <option value="10"<%if(song.audio_summary.key == "10"){%>selected<%}%>>B-Flat</option>
+	  <option value="11"<%if(song.audio_summary.key == "11"){%>selected<%}%>>B</option>
+	</select>
+    <input type="hidden" name="max_energy" id="energyMax" value="">
+    <input type="hidden" name="min_energy" id="energyMin" value="">
+    <br>
+    <input type="hidden" name="max_liveness" id="livenessMax" value="">
+    <input type="hidden" name="min_liveness" id="livenessMin" value="">
+    <br>
+    <input type="hidden" name="max_tempo" id="tempoMax" value="">
+    <input type="hidden" name="min_tempo" id="tempoMin" value="">
+    <br>
+    <input type="hidden" name="max_speechiness" id="speechinessMax" value="">
+    <input type="hidden" name="min_speechiness" id="speechinessMin" value="">
+    <br>
+    <input type="hidden" name="max_acousticness" id="acousticnessMax" value="">
+    <input type="hidden" name="min_acousticness" id="acousticnessMin" value="">
+    <br>
+    <input type="hidden" name="max_instrumentalness" id="instrumentalnessMax" value="">
+    <input type="hidden" name="min_instrumentalness" id="instrumentalnessMin" value="">
+    <br>
+
+
+    <input type="submit" >
+	</form>
+
+	<a href="/logout" class = "btn btn-danger btn-lg">Log out here</a>
+
+<script>
+var myForm = document.getElementById("myForm");//gets the form
+
+
+
+myForm.addEventListener("submit", function (event) {//puts a listner on submit
+	// event.preventDefault();
+	console.log("Listener is on!")
+	var arrInputs = document.getElementsByClassName("dInput")//gets all the non functioning inputs
+	arrInputs = Array.prototype.slice.call(arrInputs);
+	arrInputs.forEach(function(songVar){//loops through the d-inputs
+			var maxVersion = document.getElementById(songVar.name+"Max");//gets the matching max input
+			var minVersion = document.getElementById(songVar.name+"Min");//gets the min input
+			var fuzzVal = document.getElementById(songVar.name+"Fuzz");//gets the fuzz factor
+			fuzzVal = Number(fuzzVal.value);
+			valToFuzz = Number(songVar.value);
+			var rnd = function(num){
+				return(Math.floor(num*10000))/10000;	
+			};
+
+
+			if(maxVersion){
+					if(songVar.name == "tempo"){
+						valToFuzz = valToFuzz/500;
+						maxVersion.value = 500*rnd((Math.min(1,(valToFuzz+((Math.pow(fuzzVal, 2))/100)))+.001));
+
+					}
+					else{
+
+				// console.log("The songVar after parseInt: " + valToFuzz);
+				maxVersion.value = rnd(Math.min(1,(valToFuzz+((Math.pow(fuzzVal, 2))/100))+.001));//adjusts the value
+				//for the max version so it adjust slowly and then more quickly
+					}
+				console.log("This is the max value " + maxVersion.value)
+			}
+			if(minVersion){
+					if(songVar.name == "tempo"){
+						console.log("The tempo value to fuzz is " + valToFuzz);
+						valToFuzz = valToFuzz;
+						console.log("The tempo value to fuzz is " + valToFuzz);
+
+
+
+						minVersion.value = 500*rnd(Math.max(0,(valToFuzz-((Math.pow(fuzzVal, 2))/100))));
+
+					}
+					else{
+					minVersion.value = rnd(Math.max(0,(valToFuzz-((Math.pow(fuzzVal, 2))/100))-.001));//adjusts the value for the min version.
+				}
+					console.log("This is the min value " + minVersion.value)
+
+		}
+	});
+
+});
+
+</script>
+
+
+<% include partials/footer.ejs%>
+
+

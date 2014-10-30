@@ -1,0 +1,27 @@
+  <h1>We found these songs!</h1>
+
+<% if (songs.length == 0) {%>
+<h1>No Songs Matched Your Search</h1>
+<p>How about trying some different search options?</p>
+<% } %>
+
+
+<% songs.forEach(function(song){ %>
+ <form action="/mysongs" method="POST"><p>
+    Name: <%= song.artist_name %>
+    <br>
+    Title: <%= song.title %>
+    <br>
+
+    <input type="hidden" name="mySongId" value=<%= song.id %> >
+    <input type="submit" value="Check Out This Song!">
+  </p>
+  </form> 
+<% }) %>
+
+<!-- <h1>Find Songs!</h1>
+ -->
+    <!-- action is the URL we send our data to -->
+    <!-- method is the HTTP verb (e.g., GET, POST) -->
+
+

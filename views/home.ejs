@@ -1,0 +1,113 @@
+<% include partials/header.ejs%>
+
+  <h1>Hello, <%= user.name %> - welcome to our website!</h1>
+
+	<a href="/logout" class = "btn btn-danger btn-lg">Log out here</a>
+
+  <% if (typeof message !== 'undefined'){ %>
+    <h2 style = "color:red;"><%= message %></h2>
+  <% } %>
+
+
+
+  <h1>Search by Songs!</h1>
+
+<h1>By Title or Artist</h1>
+  <br>
+    <form action="/search" method="POST">
+    <label for="title">Enter a Song Title</label>
+    <input type="text" id= "title" name="title" placeholder="title" autofocus>    
+	<br>
+    <label for="artist">Artist</label>
+    <input type="text" id= "artist"  name="artist" placeholder="artist">
+  <br>
+  <input type="submit">
+  </form>
+<!--   <h1>Or By Attributes!</h1>
+    <label for="style">Style or Genre</label>
+    <input type="text" id= "style"  name="style" placeholder="style">
+  <br>
+    <label for="mood">Mood</label>
+    <input type="text" id= "mood"  name="mood" placeholder="mood">
+  <br>
+    <label for="relevance">Relevant?</label>
+    <input type="radio" id= "relevance"  name="rank_type" value="relevance">
+    <label for="relevance">Familiar?</label>    
+    <input type="radio" id= "familiar"  name="rank_type" value="familiarity">
+  <br>
+      <p>Choose a key</p>
+  <select>
+  <option value="">Any</option>
+  <option value="0">C</option>
+  <option value="1">C-Sharp</option>
+  <option value="2">D</option>
+  <option value="3">E-Flat</option>  
+  <option value="4">E</option>
+  <option value="5">F</option>  
+  <option value="6">F-Sharp</option>
+  <option value="7">G</option>  
+  <option value="8">A-Flat</option>
+  <option value="9">A</option>
+  <option value="10">B-Flat</option>
+  <option value="11">B</option>
+</select>
+  <br>
+  <br>
+    <label for="min_tempo">Min Tempo</label>
+    <input type="number" name="min_tempo" min="0" max="500">
+  <br>
+    <label for="max_tempo">Max Tempo</label>
+    <input type="number" name="max_tempo" min="0" max="500">
+  <br>
+    <label for="min_duration">Min Duration</label>
+    <input type="number" name="min_duration" min="0" max="3600">
+  <br>
+    <label for="max_duration">Max Duration</label>
+    <input type="number" name="max_duration" min="0" max="3600">
+  <br>
+    <label for="artist_min_familiarity">Min Artist Familiarity</label>
+    <input type="number" name="artist_min_familiarity" min="0.0" max="1.0" step ="0.1">
+  <br>
+    <label for="artist_max_familiarity">Max Artist Familiarity</label>
+    <input type="number" name="artist_max_familiarity" min="0.0" max="1.0" step ="0.1">
+  <br>    
+    <label for="artist_start_year_after">Min Artist Start Year</label>
+    <input type="number" name="artist_start_year_after" min="1920" max="2014">
+  <br>
+    <label for="artist_end_year_before">Max Artist End Year</label>
+    <input type="number" name="artist_end_year_before" min="1920" max="2014">
+  <br>    
+    <label for="song_min_hotttness">Min Song Hotness</label>
+    <input type="number" name="song_min_hotttness" min="0.0" max="1.0" step ="0.1">
+  <br>
+    <label for="song_max_hotttness">Max Song Hotness</label>
+    <input type="number" name="song_max_hotttness" min="0.0" max="1.0"step ="0.1">
+  <br>
+    <label for="min_danceability">Min Danceability</label>
+    <input type="number" name="min_danceability" min="0.0" max="1.0" step ="0.1">
+  <br>
+    <label for="song_max_danceability">Max Danceability</label>
+    <input type="number" name="song_max_danceability" min="0.0" max="1.0"step ="0.1">
+  <br>
+    <label for="min_energy">Min Energy</label>
+    <input type="number" name="min_energy" min="0.0" max="1.0" step ="0.1">
+  <br>
+    <label for="max_energy">Max Energy</label>
+    <input type="number" name="max_energy" min="0.0" max="1.0"step ="0.1">
+  <br>
+
+    <label for="min_speechiness">Min Speechiness</label>
+    <input type="number" name="min_speechiness" min="0.0" max="1.0" step ="0.1">
+  <br>
+    <label for="max_speechiness">Max Speechiness</label>
+    <input type="number" name="max_speechiness" min="0.0" max="1.0"step ="0.1">
+  <br> -->
+
+<!-- 
+<input type="submit">
+</form> -->
+
+
+
+
+<% include partials/footer.ejs%>
