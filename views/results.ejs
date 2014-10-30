@@ -13,6 +13,10 @@
     <br>
     Title: <%= song.title %>
     <br>
+    <% if(song.tracks.length>0) {  %>
+      SpotifyID: <%= song.tracks[0].foreign_id  %>
+      <br>
+    <% } %>
 
     <input type="hidden" name="mySongId" value=<%= song.id %> >
     <input type="submit" value="Check Out This Song!">

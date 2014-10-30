@@ -11,14 +11,20 @@
 <br>
 	<%= song.title %>
 <br>
-  <% var spotifyID =  song.tracks[0].foreign_id %>
-  <% trimSpotId =  spotifyID.slice(13)%>
-  Spotify ID: <%= trimSpotId%>
+<% var trimSpotId = "" %>
+	<% if(song.tracks.length>0) {%>
+	  <% var spotifyID =  song.tracks[0].foreign_id %>
+	  <% trimSpotId =  spotifyID.slice(13)%>
+	  Spotify ID: <%= trimSpotId%>
+	  <% } %>
 <br>
 <!-- <iframe src="https://embed.spotify.com/?uri=spotify:track:" frameborder="0" allowtransparency="true"></iframe> -->
-<% if(trimSpotId){ %>
+<% if(trimSpotId.length>0){ %>
 	<iframe src="https://embed.spotify.com/?uri=spotify:track:<%= trimSpotId %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
 	<% } %>
+<% if(trimSpotId.length<1){  %>
+<h3>Sorry. No Spotify Track Available</h3>
+<% } %>
 <hr>
 	<form>
 		  <br>

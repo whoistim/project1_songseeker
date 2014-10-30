@@ -67,7 +67,7 @@ app.post('/search', routeMiddleware.checkAuthentication, function(req,res){
 
   var url = "http://developer.echonest.com/api/v4/song/search?api_key="+process.env.ECHOKEY+"&bucket=id:spotify&bucket=tracks&format=json&results=5&bucket=audio_summary";
   var searchTerms = req.body;
-  console.log(searchTerms);
+  console.log("here are the search terms " + searchTerms);
   for(var term in searchTerms){
     if(searchTerms[term]){
       url = url.concat("&"+term+"="+encodeURIComponent(searchTerms[term])); //checks each pair in the body.
@@ -86,16 +86,14 @@ app.post('/search', routeMiddleware.checkAuthentication, function(req,res){
     else if(!error && response.statusCode === 200){
       var result = JSON.parse(body);
       var songs = result.response.songs;
-      // console.log(spotifyID);
+      // console.log("this is the thing ********* "+ );
 
-      res.render("results", {user:req.user, songs: songs, songQ: req.body});
+      res.render("results", {user:req.user, songs: songs});
       
     }
     
   });
 
-  //http://developer.echonest.com/api/v4/song/search?api_key=0JJG9AOSEXOB7KW0E&format=json&
-  //results=1&artist=radiohead&title=karma%20police&bucket=id:7digital-US&bucket=audio_summary&bucket=tracks
 });
 
 // on submit, create a new users using form values
@@ -120,9 +118,9 @@ app.post('/login', passport.authenticate('local', {
 app.post('/mysongs', routeMiddleware.checkAuthentication, function(req,res){
 var url = "http://developer.echonest.com/api/v4/song/profile?api_key="+process.env.ECHOKEY+"&format=json&bucket=id:spotify&bucket=tracks&bucket=audio_summary&id=";
 var mySongLookup = req.body.mySongId;
-console.log("this is mySongId*** "+mySongLookup);
+// console.log("this is mySongId*** "+mySongLookup);
 url = url+mySongLookup;
-console.log("this is search url*** "+url);
+// console.log("this is search url*** "+url);
 
   request(url, function(error,response,body){
     if(response.statusCode !== 200){//check for valide server response code
@@ -134,8 +132,9 @@ console.log("this is search url*** "+url);
       var result = JSON.parse(body);
       // console.log(Array.isArray(result.response.songs))
       // console.log("This is the result ****", result.response.songs[0]);
-      // console.log(result.response.songs[0]);
       var song = result.response.songs[0];
+      console.log(song);
+
       res.render("mysongs", {user:req.user, song: song});
       
     }
