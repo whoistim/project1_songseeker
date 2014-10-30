@@ -65,7 +65,7 @@ app.get('/home', routeMiddleware.checkAuthentication, function(req,res){
 
 app.post('/search', routeMiddleware.checkAuthentication, function(req,res){
 
-  var url = "http://developer.echonest.com/api/v4/song/search?api_key=0JJG9AOSEXOB7KW0E&bucket=id:spotify&bucket=tracks&format=json&results=5&bucket=audio_summary";
+  var url = "http://developer.echonest.com/api/v4/song/search?api_key="+process.env.ECHOKEY+"&bucket=id:spotify&bucket=tracks&format=json&results=5&bucket=audio_summary";
   var searchTerms = req.body;
   console.log(searchTerms);
   for(var term in searchTerms){
@@ -118,7 +118,7 @@ app.post('/login', passport.authenticate('local', {
 }));
 
 app.post('/mysongs', routeMiddleware.checkAuthentication, function(req,res){
-var url = "http://developer.echonest.com/api/v4/song/profile?api_key=0JJG9AOSEXOB7KW0E&format=json&bucket=id:spotify&bucket=tracks&bucket=audio_summary&id=";
+var url = "http://developer.echonest.com/api/v4/song/profile?api_key="+process.env.ECHOKEY+"&format=json&bucket=id:spotify&bucket=tracks&bucket=audio_summary&id=";
 var mySongLookup = req.body.mySongId;
 console.log("this is mySongId*** "+mySongLookup);
 url = url+mySongLookup;
