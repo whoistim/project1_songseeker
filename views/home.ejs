@@ -2,7 +2,7 @@
 
   <h1>Hello, <%= user.name %> - welcome to our website!</h1>
 
-	<a href="/logout" class = "btn btn-danger btn-lg">Log out here</a>
+	
 
   <% if (typeof message !== 'undefined'){ %>
     <h2 style = "color:red;"><%= message %></h2>
@@ -10,9 +10,9 @@
 
 
 
-  <h1>Search by Songs!</h1>
+  <h3>Search by Song Title:</h3>
 
-<h1>By Title or Artist</h1>
+
   <br>
     <form action="/search" method="POST">
     <label for="title">Enter a Song Title</label>
@@ -21,12 +21,16 @@
   <br>
     <label for="relevance">Well Known</label>    
     <input type="radio" id= "familiar"  name="sort" value="artist_familiarity-desc" checked>
+    
     <label for="relevance">Obscure</label>
     <input type="radio" id= "relevance"  name="sort" value="artist_familiarity-asc">
 <!--     <label for="artist">Artist</label>
     <input type="text" id= "artist"  name="artist" placeholder="artist">
   <br> -->
-  <input type="submit">
+  <br>
+  <p>
+    <input class = "btn btn-info btn-lg" type="submit">
+  </p>
 
   <!-- <br> -->
   </form>

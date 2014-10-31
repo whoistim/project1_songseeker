@@ -6,10 +6,54 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+	<link rel="stylesheet" href="stylesheets/tuneguse.css">
 	
 	<meta charset="UTF-8">
 
 	<title>Document</title>
+
 </head>
+<style>
+	body{
+	background-image: url(/images/light_grey.png);
+}
+/*body::after {
+  content: "";
+  background-color: #FFFFFF;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}*/
+</style>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+    	
+    	<ul class="nav navbar-nav ">
+      <li><a class="navbar-brand" href="/">TuneGoose</a></li>
+      <li><a href="/">New Search</a></li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    	
+       <ul class="nav navbar-nav navbar-right">
+       
+       <% if(typeof user !== 'undefined'){ %>
+        	<li><a href="/logout">Logout</a></li>
+        <% } %>
+       
+      </ul>
+    
+  </div><!-- /.container-fluid -->
+</nav>
+
+
 <div class="container text-center">

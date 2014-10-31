@@ -1,73 +1,83 @@
 <% include partials/header.ejs%>
 
-
-
-  <% if (typeof message !== 'undefined'){ %>
+ <% if (typeof message !== 'undefined'){ %>
     <h2 style = "color:red;"><%= message %></h2>
   <% } %>
+<div class="row text-center">
+  <div class="col-lg-12">
+			<h3>Here's Your Song</h3>
+			<h5 class="labels1"><%= song.title %></h5>
+				<!-- <br> -->
+			<h5 class="labels1"><%= song.artist_name %></h5>
+			<!-- <br> -->
+			<% var trimSpotId = "" %>
+				<% if(song.tracks.length>0) {%>
+				  <% var spotifyID =  song.tracks[0].foreign_id %>
+				  <% trimSpotId =  spotifyID.slice(14)%>
+				  Spotify ID: <%= trimSpotId%>
 
-<h2>This Works!</h2>
-	<%= song.artist_name %>
-<br>
-	<%= song.title %>
-<br>
-<% var trimSpotId = "" %>
-	<% if(song.tracks.length>0) {%>
-	  <% var spotifyID =  song.tracks[0].foreign_id %>
-	  <% trimSpotId =  spotifyID.slice(14)%>
-	  Spotify ID: <%= trimSpotId%>
-	  <% } %>
-<br>
-<!-- <iframe src="https://embed.spotify.com/?uri=spotify:track:" frameborder="0" allowtransparency="true"></iframe> -->
-<% if(trimSpotId.length>0){ %>
-	<iframe src="https://embed.spotify.com/?uri=spotify:track:<%= trimSpotId %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
-	<% } %>
-<% if(trimSpotId.length<1){  %>
-<h3>Sorry. No Spotify Track Available</h3>
-<% } %>
+				  <% } %>
+			<br>
+
+	<!-- </div> -->
+
+	  <!-- <div class="col-lg-8" id="playerholder"> -->
+		  <!-- <div id="player"> -->
+		  	<% if(trimSpotId.length>0){ %>
+					<iframe src="https://embed.spotify.com/?uri=spotify:track:<%= trimSpotId %>" width="390" height="91" frameborder="0" allowtransparency="true"></iframe>
+					<% } %>
+				<% if(trimSpotId.length<1){  %>
+				<h3>Sorry. No Spotify Track Available</h3>
+				<% } %>
+		  </div>
+
+		<!-- </div> -->
+
+</div>
 <hr>
-	<form>
+	<form class="info">
 		  <br>
-    <label for="energy">Energy</label>
-    <input type="number" class ="dInput" id="energy"  name="energy" min="0" max="1" step="0.01" value="<%= song.audio_summary.energy %>">
-    <br>
-    <label for="eFuzz">Fuzziness</label>
+    <label class="sLabel" for="energy">Energy</label>
     <input type=range min=1 max=7 name="eFuzz" value=0 class=fader id="energyFuzz"step=.25>
-  <br>
-    <label for="liveness">Liveness</label>
-    <input type="number" class ="dInput" name="liveness" min="0" max="1" step="0.01" value="<%= song.audio_summary.liveness %>">
+    <input type="range" class ="dInput" id="energy"  name="energy" min="0" max="1" step="0.01" value="<%= song.audio_summary.energy %>">
     <br>
-    <label for="liveFuzz">Fuzziness</label>
+   <label class="fLabel" for="eFuzz">Fuzziness</label>
+   <br>
+    <label class="sLabel" for="liveness">Liveness</label>
     <input type=range min=1 max=7 name="liveFuzz" value=0 class=fader id="livenessFuzz"step=.05>
-  <br>
-    <label for="tempo">Tempo</label>
-    <input type="number" class ="dInput" name="tempo" min="0" max="1" step="0.01" value="<%= song.audio_summary.tempo %>">
+    <input type="range" class ="dInput" name="liveness" min="0" max="1" step="0.01" value="<%= song.audio_summary.liveness %>">
     <br>
-    <label for="tFuzz">Fuzziness</label>
+    <label class="fLabel" for="liveFuzz">Fuzziness</label>
+  <br>
+    <label class="sLabel" for="tempo">Tempo</label>
     <input type=range min=1 max=7 name="tFuzz" value=0 class=fader id="tempoFuzz"step=.05>
-  <br>
-    <label for="speechiness">Speechiness</label>
-    <input type="number" class ="dInput" name="speechiness" min="0" max="1" step="0.01" value="<%= song.audio_summary.speechiness %>">
+    <input type="range" class ="dInput" name="tempo" min="0" max="1" step="0.01" value="<%= (song.audio_summary.tempo)/500 %>">
     <br>
-    <label for="sFuzz">Fuzziness</label>
+    <label class="fLabel" for="tFuzz">Fuzziness</label>
+  <br>
+    <label class="sLabel" for="speechiness">Speechiness</label>
     <input type=range min=1 max=7 name="sFuzz" value=0 class=fader id="speechinessFuzz"step=.05>
-  <br>
-    <label for="acousticness">Acousticness</label>
-    <input type="number" class ="dInput" name="acousticness" min="0" max="1" step="0.01" value="<%= song.audio_summary.acousticness %>">
+    <input type="range" class ="dInput" name="speechiness" min="0" max="1" step="0.01" value="<%= song.audio_summary.speechiness %>">
     <br>
-    <label for="aFuzz">Fuzziness</label>
+    <label class="fLabel" for="sFuzz">Fuzziness</label>
+  <br>
+    <label class="sLabel" for="acousticness">Acousticness</label>
     <input type=range min=1 max=7 name="aFuzz" value=0 class=fader id="acousticnessFuzz"step=.05>
-  <br>
-    <label for="instrumentalness">instrumentalness</label>
-    <input type="number" class ="dInput" name="instrumentalness" min="0" max="1" step="0.01" value="<%= song.audio_summary.instrumentalness %>">
+    <input type="range" class ="dInput" name="acousticness" min="0" max="1" step="0.01" value="<%= song.audio_summary.acousticness %>">
     <br>
-    <label for="iFuzz">Fuzziness</label>
+    <label class="fLabel" for="aFuzz">Fuzziness</label>
+  <br>
+    <label class="sLabel" for="instrumentalness">Instrumentalness</label>
     <input type=range min=1 max=7 name="iFuzz" value=0 class=fader id="instrumentalnessFuzz"step=.05>
+    <input type="range" class ="dInput" name="instrumentalness" min="0" max="1" step="0.01" value="<%= song.audio_summary.instrumentalness %>">
+    <br>
+    <label class="fLabel" for="iFuzz">Fuzziness</label>
 	</form>
+	<br>
 
 	<form id="myForm" action="/search" method="POST">
-	 <p>Choose a key</p>
-  <select name="key">
+	 <p class='keyChoice'>Choose a key</p>
+  <select name="key" class='keyChoice'>
 	  <option value="" <%if(song.audio_summary.key == ""){%>selected<%}%>>Any</option>
 	  <option value="0"<%if(song.audio_summary.key == "0"){%>selected<%}%>>C</option>
 	  <option value="1"<%if(song.audio_summary.key == "1"){%>selected<%}%>>C-Sharp</option>
@@ -85,10 +95,10 @@
 	</select>
 	  <br>
 	  <br>
-    <label for="relevance">Well Known</label>    
-    <input type="radio" id= "familiar"  name="sort" value="artist_familiarity-desc" checked>
-    <label for="relevance">Obscure</label>
-    <input type="radio" id= "relevance"  name="sort" value="artist_familiarity-asc">
+    <label class="obscure" for="relevance">Well Known</label>    
+    <input class="obscure" type="radio" id= "familiar"  name="sort" value="artist_familiarity-desc" checked>
+    <label class="obscure" for="relevance">Obscure</label>
+    <input class="obscure" type="radio" id= "relevance"  name="sort" value="artist_familiarity-asc">
 		    
 		    <input type="hidden" name="max_energy" id="energyMax" value="">
 		    <input type="hidden" name="min_energy" id="energyMin" value="">
@@ -108,10 +118,11 @@
 		    <input type="hidden" name="max_instrumentalness" id="instrumentalnessMax" value="">
 		    <input type="hidden" name="min_instrumentalness" id="instrumentalnessMin" value="">
 
-    <input type="submit" >
+    <input type="submit" class ="btn btn-primary " id='searchButton'>
 	</form>
+	<br>
 
-	<a href="/logout" class = "btn btn-danger btn-lg">Log out here</a>
+	
 
 <script>
 var myForm = document.getElementById("myForm");//gets the form

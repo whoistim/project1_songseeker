@@ -15,6 +15,7 @@ var express = require("express"),
 // Middleware for ejs, grabbing HTML and including static files
 app.set('view engine', 'ejs');
 app.use(morgan('dev'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}) );
 
 app.use(session( {
@@ -48,7 +49,7 @@ passport.deserializeUser(function(id, done){
     });
 });
 app.get('/', routeMiddleware.preventLoginSignup, function(req,res){
-    res.render('index');
+    res.render('index', {user: req.user});
 });
 
 app.get('/signup', routeMiddleware.preventLoginSignup, function(req,res){
@@ -103,8 +104,10 @@ app.post('/submit', function(req,res){
   function(err){
     res.render("signup", {message: err.message, username: req.body.username});
   },
-  function(success){
-    res.render("index", {message: success.message});
+  function(){
+    passport.authenticate('local')(req,res,function(){
+      res.render("home", {user:req.user});  
+    });
   });
 });
 

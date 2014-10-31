@@ -1,3 +1,4 @@
+<% include partials/header.ejs%>
   <h1>We found these songs!</h1>
 
 <% if (songs.length == 0) {%>
@@ -8,22 +9,22 @@
 
 
 <% songs.forEach(function(song){ %>
- <form action="/mysongs" method="POST"><p>
-    Name: <%= song.artist_name %>
-    <br>
-    Title: <%= song.title %>
+ <form action="/mysongs" method="POST" class="resultsForm"><p>
+    <label class="resultLabel">Title: </label><%= song.title %>
+    <br>    
+    <label class="resultLabel">Artist: </label><%= song.artist_name %>
     <br>
     <% if(song.tracks.length>0) {  %>
-      SpotifyID: <%= song.tracks[0].foreign_id.slice(14)  %>
+      <label class="resultLabel">SpotifyID: </label><%= song.tracks[0].foreign_id.slice(14)  %>
       <br>
     <% } %>
 
     <input type="hidden" name="mySongId" value=<%= song.id %> >
-    <input type="submit" value="Check Out This Song!">
+    <input type="submit" class="btn btn-primary btn-sm" value="Check Out This Song!">
   </p>
   </form> 
 <% }) %>
-
+<% include partials/footer.ejs%>
 <!-- <h1>Find Songs!</h1>
  -->
     <!-- action is the URL we send our data to -->
