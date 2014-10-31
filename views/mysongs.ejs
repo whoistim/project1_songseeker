@@ -76,7 +76,7 @@
 	<br>
 
 	<form id="myForm" action="/search" method="POST">
-	 <p class='keyChoice'>Choose a key</p>
+	 <p class='buttonLabel'>Choose a key</p>
   <select name="key" class='keyChoice'>
 	  <option value="" <%if(song.audio_summary.key == ""){%>selected<%}%>>Any</option>
 	  <option value="0"<%if(song.audio_summary.key == "0"){%>selected<%}%>>C</option>
@@ -118,7 +118,7 @@
 		    <input type="hidden" name="max_instrumentalness" id="instrumentalnessMax" value="">
 		    <input type="hidden" name="min_instrumentalness" id="instrumentalnessMin" value="">
 
-    <input type="submit" class ="btn btn-primary " id='searchButton'>
+    <input type="submit" class ="btn btn-primary " id='searchButton' value='Find Songs Like This'>
 	</form>
 	<br>
 

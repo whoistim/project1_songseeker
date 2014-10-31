@@ -1,10 +1,10 @@
 <% include partials/header.ejs%>
-  <h1>We found these songs!</h1>
+  <h1>Song Search Results</h1>
 
 <% if (songs.length == 0) {%>
 <h1>No Songs Matched Your Search</h1>
 <p>How about trying some different search options?</p>
-<FORM><INPUT Type="button" VALUE="Try Again" onClick="history.go(-1);return true;"></FORM>
+<FORM><INPUT Type="button" class="btn btn-warning btn-sm" VALUE="Try Again" onClick="history.go(-1);return true;"></FORM>
 <% } %>
 
 
