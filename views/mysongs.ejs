@@ -72,6 +72,18 @@
     <input type="range" class ="dInput" name="instrumentalness" min="0" max="1" step="0.01" value="<%= song.audio_summary.instrumentalness %>">
     <br>
     <label class="fLabel" for="iFuzz">Fuzziness</label>
+<!--    <br>
+    <label class="sLabel" for="danceability">Danceability</label>
+    <input type=range min=1 max=7 name="iFuzz" value=0 class=fader id="danceabilityFuzz"step=.05>
+    <input type="range" class ="dInput" name="danceability" min="0" max="1" step="0.01" value="<%= song.audio_summary.danceability %>">
+   <br>
+   <br>
+   <br>
+    <label class="sLabel" for="song_hotttness">Hottness</label>
+    <input type=range min=1 max=7 name="iFuzz" value=0 class=fader id="song_hotttnessFuzz"step=.05>
+    <input type="range" class ="dInput" name="song_hotttness" min="0" max="1" step="0.01" value="<%= song.audio_summary.song_hotttness %>">
+  <br> -->
+    <label class="fLabel" for="iFuzz">Fuzziness</label>   
 	</form>
 	<br>
 
@@ -118,6 +130,12 @@
 		    <input type="hidden" name="max_instrumentalness" id="instrumentalnessMax" value="">
 		    <input type="hidden" name="min_instrumentalness" id="instrumentalnessMin" value="">
 
+<!-- 		    <input type="hidden" name="max_danceability" id="danceabilityMax" value="">
+		    <input type="hidden" name="min_danceability" id="danceabilityMin" value="">
+
+		    <input type="hidden" name="song_max_hotttness" id="hotttnessMax" value="">
+		    <input type="hidden" name="song_min_hotttness" id="hotttnessMin" value="">	 -->	    
+
     <input type="submit" class ="btn btn-primary " id='searchButton' value='Find Songs Like This'>
 	</form>
 	<br>
@@ -147,7 +165,7 @@ myForm.addEventListener("submit", function (event) {//puts a listner on submit
 
 			if(maxVersion){
 					if(songVar.name == "tempo"){
-						valToFuzz = valToFuzz/500;
+						valToFuzz = valToFuzz;
 						maxVersion.value = 500*rnd((Math.min(1,(valToFuzz+((Math.pow(fuzzVal, 2))/100)))+.001));
 
 					}
