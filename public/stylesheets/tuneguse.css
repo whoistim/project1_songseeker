@@ -1,4 +1,10 @@
+.col-md-8{
+background-color: #BABABA;
+border-radius: 4px;
+border-color: #ADADAD;
 
+
+}
 .info {
 position: relative;
 /*top: -140px;*/
@@ -70,7 +76,7 @@ height:20px;
 
 #searchButton{
 	display: flex;
-	margin: 0 0 0 63%;
+	margin: 0 0 20px 63%;
 }
 
 	input[class='dInput'] {
@@ -98,7 +104,7 @@ height:20px;
 
 	input[class='fader'] {
 		-webkit-appearance: none;
-		border-radius: 5px;
+		border-radius: 3px;
 		box-shadow: inset 0 0 5px #333;
 		background-color: #E4EBEA;
 		height: 10px;
@@ -109,8 +115,8 @@ height:20px;
 
 			input[class='fader']::-webkit-slider-thumb {
 		-webkit-appearance: none !important;
-		border-radius: 6px;
-		background-color: #FABC2D;
+		border-radius: 3px;
+		background-color: #FFDF29;
 		box-shadow:inset 0 0 2px rgba(000,000,000,0.5);
 		border: 2px solid grey;
 		height: 14px;
